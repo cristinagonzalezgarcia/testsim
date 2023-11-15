@@ -1,3 +1,4 @@
+
 if [ "$#" -eq 1 ]
 then
     sampleid=$1

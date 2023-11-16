@@ -8,8 +8,14 @@ gunzip res/genome/ecoli.fasta.gz
 echo "Running STAR index..."
     mkdir -p res/genome/star_index
     STAR --runThreadN 4 --runMode genomeGenerate --genomeDir res/genome/star_index/ --genomeFastaFiles res/genome/ecoli.fasta --genomeSAindexNbases 9
+
+for $sampleid in $(ls data /*.fastqc.gz | cut -d"_" -f1 | cut -d"/" -f2 | sort | uniq)
+do bash myscript.sh $sampleid
+
+echo "Running FastQC..."
+    mkdir -p out/fastqc
+    fastqc -o out/fastqc data/${sampleid}*.fastq.gz
     echo
-for $sampleid in $(get sample ids)
-do
+
 	#call analyse_sample for each sampleid
 done

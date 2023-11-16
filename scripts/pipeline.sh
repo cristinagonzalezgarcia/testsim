@@ -33,3 +33,6 @@ echo "Running STAR alignment..."
     STAR --runThreadN 4 --genomeDir res/genome/star_index/ --readFilesIn out/cutadapt/${sampleid}_1.trimmed.fastq.gz out/cutadapt/${sampleid}_2.trimmed.fastq.gz --readFilesCommand zcat --outFileNamePrefix out/star/${sampleid}/
 echo
 done
+#Running Multiqc
+multiqc -o out/multiqc /home/vant/testsim
+
